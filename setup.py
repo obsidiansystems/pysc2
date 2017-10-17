@@ -40,7 +40,6 @@ Read the README at https://github.com/deepmind/pysc2 for more information.
 
 requires = [
     'absl-py>=0.1.0',
-    'enum34',
     'future',
     'mock',
     'mpyq',
@@ -55,6 +54,10 @@ requires = [
 
 if sys.version_info[0] == 2:
     requires.append('futures')
+
+if (sys.version_info[0] == 2
+      or (sys.version_info[0] == 3 and sys.version_info[1] < 4)):
+    requires.append('enum34')
 
 setup(
     name='PySC2',
